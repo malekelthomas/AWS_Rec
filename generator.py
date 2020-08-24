@@ -18,32 +18,30 @@ def product_getter(user_id, keyword):
 
     response = requests.request("GET", url, headers=headers, params=querystring)
 
-    with open(user_id+"_"+keyword+"_products.json", "w") as f:
+    with open(str(user_id)+"_"+keyword+"_products.json", "w") as f:
         json.dump(response.json(), f)
 
     print("Products found\n")
 
 def product_generator(user_id,keyword):
     
-    product_getter(keyword)
+    product_getter(user_id, keyword)
 
-    with open(user_id+"_"+keyword+"_products.json", "r") as f:
+    with open(str(user_id)+"_"+keyword+"_products.json", "r") as f:
         data = json.load(f)
         count = 0
         for product in data['products']:
-            if product['reviews'] < 300:
-                print("Wtf", product['title'],"\n")
+            if count == 10:
+            	break
+            if product['reviews'] < 500:
                 continue
-            if count == 5:
-                break
             else:
                 print(product['title']+"\n")
-            count+=1
-        data.close()
+                count+=1
 
 
 
-def category_chooser_rater():
+def category_chooser_rater(user_id):
 
     ratings_dict = {}
     with open("categories.json", "r") as f:
@@ -77,9 +75,12 @@ def category_chooser_rater():
                         else:
                             print(i)
         user_in2 = input("Interested in any of these?: ")
+        
         ratings_dict[user_in]+=1
         ratings_dict[user_in2]=1
-        print(ratings_dict)
+        print(ratings_dict, "\n")
+        product_generator(user_id, user_in2)
+        
     
     with open("ratings.csv", "w") as f:
         f.write("Category,Clicks\n")
@@ -89,4 +90,4 @@ def category_chooser_rater():
     
 
 
-category_chooser_rater()
+category_chooser_rater(1234)
