@@ -1,0 +1,46 @@
+{
+    "Categories": [
+        {
+            "Games": [
+                "video",
+                "board",
+                "card",
+                "football",
+                "soccer",
+                "basketball",
+                "computer",
+                "family",
+                "children's",
+                "puzzle",
+                "adult"
+            ]
+        },
+        {
+            "Home&Kitchen": [
+                "culinary equipment",
+                "bath",
+                "decorations"
+            ]
+        },
+        {
+            "Clothes": [
+                "men",
+                "women",
+                "girl's",
+                "boy's"
+            ]
+        },
+        {
+            "Electronics": [
+                {
+                    "Appliances": [
+                        "Refrigerators & Freezers",
+                        "Surveillance"
+                    ]
+                },
+                "TVs",
+                "Audio Equipment"
+            ]
+        }
+    ]
+}
